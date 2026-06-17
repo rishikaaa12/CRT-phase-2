@@ -1,4 +1,5 @@
-#leetcode two sum 
+# problem 1
+# leetcode two sum 
   class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
@@ -12,3 +13,24 @@ public:
 return {};
     }
 };
+
+
+#problem 1 Two Sum (optimal approach)
+#leetcode 
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+  unordered_map<int, int> map;
+  for(int i = 0; i < nums.size(); i++) {
+    int compliment = target - nums[i];
+    if(map.find(compliment) != map.end()) {
+return {map[compliment], i};
+    }
+    map[nums[i]] = i;
+    
+  }
+  return {-1, - 1};
+    }
+};
+// time -- O(n);
+// Space -- O(n);
