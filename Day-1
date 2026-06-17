@@ -1,5 +1,6 @@
 # problem 1
 # leetcode two sum 
+# (brute force approach)
   class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
