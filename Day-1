@@ -1,4 +1,4 @@
-# problem 1
+# problem - 1
 # leetcode two sum 
 # (brute force approach)
   class Solution {
@@ -16,8 +16,8 @@ return {};
 };
 
 
-#problem 1 Two Sum (optimal approach)
-#leetcode 
+#problem - 1 Two Sum (optimal approach)
+#leetcode problem
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
@@ -36,7 +36,7 @@ return {map[compliment], i};
 // time -- O(n);
 // Space -- O(n);
 
-#problem 3
+#problem - 2
 #problem 53 Mximum Subarray (leetcode)
 class Solution {
 public:
@@ -61,3 +61,35 @@ public:
     }
 }; 
 
+#problem - 3
+#leetcode problem 
+# 75 - sort colors 
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+     
+        int zero = 0, one = 0, two = 0;
+        for (int n : nums) {
+            if (n == 0) zero++;
+            else if (n == 1) one++;
+            else two++;
+        }
+
+        for (int i = 0; i < nums.size(); ++i) {
+            if (zero > 0) {
+                nums[i] = 0;
+                zero--;
+            } else if (one > 0) {
+                nums[i] = 1;
+                one--;
+            } else {
+                nums[i] = 2;
+                two--;
+            }
+        }
+    }
+};   
+
+
+# problem -4 
+#leetcode problem
