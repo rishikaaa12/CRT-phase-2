@@ -1,7 +1,7 @@
 # problem - 1
 # leetcode problems 
 # 238 - product of array except self 
-# optimal approach 
+# optimal approach - prefix, suffix approach 
 
 class Solution {
 public:
