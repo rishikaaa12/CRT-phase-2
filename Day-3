@@ -83,3 +83,72 @@ public:
         return sum;
     }
 };
+
+# problem - 3
+# leetcode problem
+# 344 - reverse string 
+#(approach - 1) swapping 
+class Solution {
+public:
+    void reverseString(vector<char>& s) {
+          int l = 0;
+        int r = s.size() - 1;
+ 
+        while (l < r) {
+           swap(s[l], s[r]);
+            l++;
+           r--;
+        }
+    
+     }
+ };
+
+
+# ( approach - 2) stack
+class Solution {
+public:
+    void reverseString(vector<char>& s) {
+stack<char> st;
+for(int i = 0; i < s.size(); i++) {
+    st.push(s[i]);
+}
+int i = 0;
+while(!st.empty()) {
+    s[i++] = st.top();
+    st.pop();
+}
+    }
+};
+
+# problem - 4 
+# leetcode problem
+# 242 - valid anagram
+# approach - 1 (sorting)
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        sort(s.begin(), s.end());
+        sort(t.begin(), t.end());
+        if (s == t) {
+            return true;
+
+        } else {
+            return false;
+        }
+
+    }
+};
+
+# problem -5 
+# leetcode problem
+# 796 - rotate string 
+class Solution {
+public:
+    bool rotateString(string s, string goal) {
+        if(s.size() != goal.size()) {
+            return false;
+        }
+      string doubleString = s+s;
+      return doubleString.contains(goal);
+    }
+};
