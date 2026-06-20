@@ -31,43 +31,50 @@ public:
     }
 };
 
+
 # problem -2 
 # binary search algorithm 
 
 #include <iostream>
-using namespace std;
 #include <vector>
+using namespace std;
 
 int binarySearch(vector<int> &arr, int target) {
     int low = 0;
     int high = arr.size() - 1;
-    
-    while(low <= high) {
+
+    while (low <= high) {
         int mid = low + (high - low) / 2;
-        
-        if(arr[mid] == target) {
+
+        if (arr[mid] == target) {
             return mid;
         }
-        if(arr[mid] < target) {
+
+        if (arr[mid] < target) {
             low = mid + 1;
         } else {
             high = mid - 1;
         }
     }
+
     return -1;
 }
-int main() {
-  vector<int> arr = {2,3,4,6,8,10};
-  int target = 10;
-  int result = binarySearch();
 
- if(result == -1) {
-     cout << "Element is not found in the given array";
- } else {
-     cout << "Element is found at "<< result;
- }
+int main() {
+    vector<int> arr = {2, 3, 4, 6, 8, 10};
+    int target = 10;
+
+    int result = binarySearch(arr, target);
+
+    if (result == -1) {
+        cout << "Element is not found in the given array";
+    } else {
+        cout << "Element is found at index " << result;
+    }
+
     return 0;
 }
+
 
 # problem - 3 
 # geeks for geeks problem
@@ -91,5 +98,29 @@ class Solution {
             }
             }
             return ans;
+    }
+};
+
+
+# problem - 4
+# leetcode problem 
+# 162 - peak of a number 
+class Solution {
+public:
+    int findPeakElement(vector<int>& nums) {
+            int low = 0;
+        int high = nums.size() - 1;
+
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+
+            if (nums[mid] < nums[mid + 1]) {
+                low = mid + 1;
+            } else {
+                high = mid;
+            }
+        }
+
+        return low;
     }
 };
