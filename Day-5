@@ -1,1 +1,249 @@
+// problem-1 --
+// creation of a linked list
 
+#include <iostream>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node* next;
+    
+    Node (int new_data) {
+        this->data = new_data;
+        this->next = nullptr;
+    }
+};
+Node* head = nullptr;
+void traversal() {
+    while(head != nullptr) {
+        cout << head->data << " ";
+        head = head->next;
+    }
+}
+int main() {
+  head = new Node(10);
+  head->next = new Node(20);
+  head->next->next = new Node(30);
+  head->next->next->next = new Node(40);
+
+traversal();
+
+    return 0;
+}
+
+// problem-2 --
+// inserting data anywhere in a linked list
+
+#include <iostream>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node* next;
+    
+    Node (int new_data) {
+        this->data = new_data;
+        this->next = nullptr;
+    }
+};
+Node* head = nullptr;
+void traversal() {
+    while(head != nullptr) {
+        cout << head->data << " ";
+        head = head->next;
+    }
+}
+int main() {
+  head = new Node(10);
+  head->next = new Node(20);
+  head->next->next = new Node(25);
+  head->next->next->next = new Node(30);
+ head->next->next->next->next = new Node(40);
+traversal();
+
+    return 0;
+}
+
+// problem-3 --
+// deleting data at head linked list
+
+#include <iostream>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node* next;
+    
+    Node (int new_data) {
+        this->data = new_data;
+        this->next = nullptr;
+    }
+};
+
+Node* head = nullptr;
+void deleteAthead() {
+    if(head == nullptr) {
+        cout << "List is empty";
+        return;
+    }
+    head = head->next;
+}
+void display() {
+   Node* temp = head;
+   while(temp != nullptr){
+       cout << temp->data << " ";
+       temp = temp->next;
+   }
+   cout << "NULL";
+}
+
+
+int main() {
+  head = new Node(10);
+  head->next = new Node(20);
+  head->next->next = new Node(25);
+  head->next->next->next = new Node(30);
+ head->next->next->next->next = new Node(40);
+deleteAthead();
+display();
+
+    return 0;
+}
+
+
+//problem -4 ---
+// deleting at last node
+void deleteEnd(Node* &head) {
+    if (head == NULL)
+        return;
+
+    if (head->next == NULL) {
+        delete head;
+        head = NULL;
+        return;
+    }
+
+    Node* temp = head;
+
+    while (temp->next->next != NULL) {
+        temp = temp->next;
+    }
+
+    delete temp->next;
+    temp->next = NULL;
+}
+
+
+// problem -5 
+// deleting at any position 
+void deletePosition(Node* &head, int pos) {
+    if (head == NULL)
+        return;
+
+    if (pos == 1) {
+        deleteBeginning(head);
+        return;
+    }
+
+    Node* temp = head;
+
+    for (int i = 1; i < pos - 1; i++) {
+        temp = temp->next;
+    }
+
+    Node* nodeToDelete = temp->next;
+    temp->next = temp->next->next;
+
+    delete nodeToDelete;
+}
+
+// time and space complexity 
+
+| Operation           | Complexity |
+| ------------------- | ---------- |
+| Insert at Beginning | O(1)       |
+| Insert at End       | O(n)       |
+| Insert at Position  | O(n)       |
+| Delete Beginning    | O(1)       |
+| Delete End          | O(n)       |
+| Delete Position     | O(n)       |
+
+
+// problem - 6
+// leetcode problem 
+// 92 - reverse a linked list 2
+class Solution {
+public:
+    ListNode* reverseBetween(ListNode* head, int left, int right) {
+        ListNode dummy(0);
+        dummy.next = head;
+        
+        ListNode* prev = &dummy;
+        
+        for(int i = 1; i < left; i++)
+            prev = prev->next;
+            
+        ListNode* curr = prev->next;
+        
+        for(int i = 0; i < right - left; i++) {
+            ListNode* temp = curr->next;
+            curr->next = temp->next;
+            temp->next = prev->next;
+            prev->next = temp;
+        }
+        
+        return dummy.next;
+    }
+};
+
+
+// problem -7
+// leetcode problem
+// 206- reverse a linked list
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        if(head == NULL || head->next == NULL) return head;
+        ListNode* prev = NULL;
+        ListNode* h2 = reverseList(head->next);
+        head->next->next = head;
+        head->next=prev;
+        return h2;
+    }
+};
+
+// problem - 8
+// leetcode problem
+// 876 - middle of a linked list 
+// hare and tortoise algorithm
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+          ListNode *first = head, *second = head;
+        while (second && second->next) {
+            first = first->next;
+            second = second->next->next;
+        }
+        return first;
+    }
+};
