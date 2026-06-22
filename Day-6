@@ -100,3 +100,36 @@ public:
         return head;
             }
 };
+
+// problem - 4
+// leetcode problem 
+// 19 - remove nth node from end of list
+
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        int len = 0;
+        ListNode* temp = head;
+
+        while (temp) {
+            len++;
+            temp = temp->next;
+        }
+
+        if (len == n) {
+            return head->next;
+        }
+
+        temp = head;
+
+        for (int i = 1; i < len - n; i++) {
+            temp = temp->next;
+        }
+
+        temp->next = temp->next->next;
+
+        return head;
+    }
+};
+
+// problem - 4
