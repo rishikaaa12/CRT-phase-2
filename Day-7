@@ -23,3 +23,52 @@ public:
 };
 
 // problem - 2
+// geeks for geeks problem 
+// next greater element 
+// brute force approach 
+
+class Solution {
+public:
+    vector<long long> nextLargerElement(vector<long long> arr, int n) {
+        vector<long long> ans;
+
+        for(int i = 0; i < n; i++) {
+            long long nextGreater = -1;
+
+            for(int j = i + 1; j < n; j++) {
+                if(arr[j] > arr[i]) {
+                    nextGreater = arr[j];
+                    break;
+                }
+            }
+
+            ans.push_back(nextGreater);
+        }
+
+        return ans;
+    }
+};
+
+// stack approach
+class Solution {
+  public:
+    vector<int> nextLargerElement(vector<int>& arr) {
+        // code here
+     int n = arr.size();
+     stack<int> st;
+     vector<int> ans(n);
+     
+     for(int i = n - 1; i >= 0; i--) {
+         while(!st.empty() && st.top() <= arr[i]) {
+             st.pop();
+         }
+         if(st.empty()) {
+             ans[i] = -1;
+         } else {
+             ans[i] = st.top();
+         }
+         st.push(arr[i]);
+     }
+     return ans;
+    }
+};
