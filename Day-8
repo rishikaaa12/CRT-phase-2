@@ -21,3 +21,29 @@ public:
         return ans;
     }
 };
+
+// problem - 2
+// leetcode problem
+// 1047 - remove all adjacent duplicates in string 
+class Solution {
+public:
+    string removeDuplicates(string s) {
+        stack<char> st;
+
+        for(char ch : s) {
+            if(!st.empty() && st.top() == ch)
+                st.pop();
+            else
+                st.push(ch);
+        }
+
+        string ans = "";
+
+        while(!st.empty()) {
+            ans = st.top() + ans;
+            st.pop();
+        }
+
+        return ans;
+    }
+};
