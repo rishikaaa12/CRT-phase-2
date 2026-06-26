@@ -1,0 +1,38 @@
+// problem - 1
+// leetcode problem 
+111 - minimum depth of binary tree
+// approach -1 
+class Solution {
+public:
+    int minDepth(TreeNode* root) {
+        if (root == NULL)
+            return 0;
+
+        if (root->left == NULL)
+            return 1 + minDepth(root->right);
+
+        if (root->right == NULL)
+            return 1 + minDepth(root->left);
+
+        return 1 + min(minDepth(root->left), minDepth(root->right));
+    }
+};
+
+// approach - 2
+
+class Solution {
+public:
+    int minDepth(TreeNode* root) {
+        if(root == nullptr ) 
+        return 0;
+        int lh = minDepth(root->left);
+        int rh = minDepth(root->right);
+        if(lh == 0 || rh == 0) {
+            return lh + rh + 1;
+        }
+       
+        int minDepth = min(lh,rh) + 1;
+        return minDepth;
+       
+    }
+};
