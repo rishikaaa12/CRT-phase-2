@@ -91,3 +91,46 @@ public:
   return isBalanced(root->left) && isBalanced(root->right);
     }
 };
+
+// problem - 4
+// leetcode problem 
+// 543 - diameter of a binary tree
+class Solution {
+public:
+    int diameter = 0;
+
+    int height(TreeNode* root) {
+        if (root == nullptr)
+            return 0;
+
+        int lh = height(root->left);
+        int rh = height(root->right);
+
+        diameter = max(diameter, lh + rh);
+
+        return max(lh, rh) + 1;
+    }
+
+    int diameterOfBinaryTree(TreeNode* root) {
+        height(root);
+        return diameter;
+    }
+};
+
+// problem - 5
+// leetcode problem
+// 112 - path sum
+class Solution {
+public:
+    bool hasPathSum(TreeNode* root, int targetSum) {
+        if (root == NULL)
+            return false;
+
+        // Leaf node
+        if (root->left == NULL && root->right == NULL)
+            return targetSum == root->val;
+
+        return hasPathSum(root->left, targetSum - root->val) ||
+               hasPathSum(root->right, targetSum - root->val);
+    }
+};
