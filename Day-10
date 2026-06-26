@@ -5,10 +5,10 @@
 class Solution {
 public:
     int minDepth(TreeNode* root) {
-        if (root == NULL)
+        if (root == nullptr)
             return 0;
 
-        if (root->left == NULL)
+        if (root->left == nullptr)
             return 1 + minDepth(root->right);
 
         if (root->right == NULL)
@@ -44,10 +44,10 @@ class Solution {
 public:
     bool isSameTree(TreeNode* p, TreeNode* q) {
 
-        if (p == NULL && q == NULL)
+        if (p == nullptr && q == nullptr)
             return true;
 
-        if (p == NULL || q == NULL)
+        if (p == nullptr || q == nullptr)
             return false;
 
         if (p->val != q->val)
@@ -123,13 +123,10 @@ public:
 class Solution {
 public:
     bool hasPathSum(TreeNode* root, int targetSum) {
-        if (root == NULL)
+        if (root == nullptr)
             return false;
-
-        // Leaf node
-        if (root->left == NULL && root->right == NULL)
+        if (root->left == nullptr && root->right == nullptr)
             return targetSum == root->val;
-
         return hasPathSum(root->left, targetSum - root->val) ||
                hasPathSum(root->right, targetSum - root->val);
     }
