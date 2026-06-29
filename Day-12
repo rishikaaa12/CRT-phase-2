@@ -27,3 +27,31 @@ class Solution {
 };
 
 // problem - 2 
+// gfg problem 
+// BFS of a graph
+class Solution {
+  public:
+    vector<int> bfs(vector<vector<int>> &adj) {
+        // code here
+        int n = adj.size();
+        vector<int> ans;
+        vector<bool> visited(n, false);
+        queue<int> q;
+        q.push(0);
+        visited[0] = true;
+        while(!q.empty()) {
+            int node = q.front();
+            q.pop();
+            ans.push_back(node);
+            for(int adjacentNode : adj[node]) {
+                if(!visited[adjacentNode]) {
+                    visited[adjacentNode] = true;
+                    q.push(adjacentNode);
+                }
+            }
+        }
+        return ans;
+    }
+};
+
+// problem - 3
