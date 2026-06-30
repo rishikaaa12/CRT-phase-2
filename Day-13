@@ -68,4 +68,5 @@ void dfs(vector<vector<int>>& isConnected, vector<bool> &visited, int n, int nod
 };
 
 // problem - 3
-// 
+// binary string without consecutive ones
+// (n-1) + (n-2)
