@@ -27,5 +27,45 @@ void dfs(vector<vector<int>>& isConnected, vector<bool> &visited, int n, int nod
  };
 
 // problem - 2
-// leetcode problem
+// gfg problem
+// undirected graph cycle 
+//class Solution {
+  public:
+    bool isCycle(int V, vector<vector<int>>& edges) {
+        // Code here
+        vector<vector<int>> adj(V);
+        for(auto edge : edges) {
+            int u = edge[0];
+            int v = edge[1];
+            adj[u].push_back(v);
+            adj[v].push_back(u); // undirected graph
+        }
+        vector<int> visited(V, 0);
+        for(int i = 0; i < V; i++) {
+            if(!visited[i]){
+                queue<pair<int, int>> q; 
+                q.push({i, -1});
+                visited[i] = 1;
+                while(!q.empty()) {
+                    int node = q.front().first;
+                    int parent = q.front().second;
+                    q.pop();
+                    for(int adjacentNode : adj[node]) {
+                        if(!visited[adjacentNode]) {
+                            visited[adjacentNode] = 1;
+                            q.push({adjacentNode, node});
+                            
+                        } else if(adjacentNode != parent) {
+                            return true;
+                        }
+                    }
+                }
+            }
+            
+        }
+        return false;
+    }
+};
+
+// problem - 3
 // 
