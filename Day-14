@@ -18,6 +18,24 @@ class Solution {
     }
 };
 
+// (space optimization approach)
+class Solution {
+  public:
+    int countStrings(int n) {
+    if(n == 1) return 2;
+    if(n == 2) return 3;
+       int prev1 = 3;
+       int prev2 = 2;
+       for(int i = 3; i <= n; i++) {
+           int curr = prev1 + prev2;
+           prev2 = prev1;
+           prev1= curr;
+       }
+       return prev1;
+    }
+};
+
+
 // problem - 2
 // leetcode problem 
 // 509 - fibonacci number 
@@ -31,3 +49,9 @@ public:
         return fib(n - 1) + fib(n - 2);
     }
 };
+
+
+// problem - 3
+// tiling problem 
+// approach
+(n-1) + (n-4)
