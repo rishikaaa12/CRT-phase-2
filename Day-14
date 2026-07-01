@@ -1,0 +1,33 @@
+// problem - 1
+// gfg problem
+// consecutive one's not allowed
+class Solution {
+  public:
+  int recursive(int n, vector<int> &dp) {
+       if(n == 1) return 2;
+        if(n == 2) return 3;
+        if(dp[n] != -1) {
+            return dp[n];
+        }
+     return dp[n] = recursive(n - 1, dp) + recursive(n - 2, dp);
+  }
+    int countStrings(int n) {
+    vector<int> dp(n + 1, -1);
+    return recursive(n, dp);
+        
+    }
+};
+
+// problem - 2
+// leetcode problem 
+// 509 - fibonacci number 
+// approach - 1
+class Solution {
+public:
+    int fib(int n) {
+        if (n == 0 || n == 1)
+            return n;
+
+        return fib(n - 1) + fib(n - 2);
+    }
+};
