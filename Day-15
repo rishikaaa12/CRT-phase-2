@@ -57,8 +57,8 @@ void func(int id,vector<int>& nums,vector<int>& ds, vector<vector<int>> &ans) {
      // explore further elements
     for(int i = id; i < nums.size(); i++) {
         ds.push_back(nums[i]);
-        func(i + 1, nums, ds, ans);
-        ds.pop_back();
+        func(i + 1, nums, ds, ans); // move to next index
+        ds.pop_back(); // backtrack 
     }
 }
     vector<vector<int>> subsets(vector<int>& nums) {
