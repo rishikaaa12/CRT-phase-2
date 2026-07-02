@@ -21,3 +21,50 @@ if(index >= nums.size()){
         return robFrom(nums, 0);   
     }
 };
+
+
+// problem - 2
+// leetcode problem 
+// 322 - coin change 
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        if (amount < 0) return -1;
+        if (amount == 0) return 0;
+        
+        int min_count = INT_MAX;
+        
+        for (int coin : coins) {
+            int res = coinChange(coins, amount - coin);
+            // If a solution exists for the subproblem
+            if (res >= 0 && res < min_count) {
+                min_count = 1 + res;
+            }
+        }
+        
+        return (min_count == INT_MAX) ? -1 : min_count;
+    }
+};
+
+// problem - 3
+// leetcode problem 
+// 78 - subsets
+class Solution {
+public:
+void func(int id,vector<int>& nums,vector<int>& ds, vector<vector<int>> &ans) {
+    // add current subset to answer
+    ans.push_back(ds);
+     // explore further elements
+    for(int i = id; i < nums.size(); i++) {
+        ds.push_back(nums[i]);
+        func(i + 1, nums, ds, ans);
+        ds.pop_back();
+    }
+}
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vector<int>> ans;
+        vector<int> ds;
+        func(0, nums, ds, ans);
+        return ans;
+    }
+};
